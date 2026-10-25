@@ -9,17 +9,17 @@
         │  每次练完输出一张 SESSION CARD        │  听完也让 Claude 出卡片
         └──────────────┬───────────────────────┘
                        ▼
-            progress/inbox.md（复制粘贴，<1 分钟）
-                       │  周末 /weekly-review（Claude Code）
+            手机备忘录攒一周的卡片（复制粘贴，<1 分钟）
+                       │  周末 claude.ai/code 开 session，贴卡片，跑 /weekly-review
                        ▼
-   mistakes.md · expressions.md · weekly/YYYY-Www.md
+   mistakes.md · expressions.md · weekly/YYYY-Www.md（自动 commit + push）
                        │
                        ▼
-     coach-memory.md ──上传──► Claude Project（教练记得你的弱点和本周目标）
+     coach-memory.md 全文显示在对话里 ──复制替换──► Claude Project
 ```
 
 - **Claude Project** = 教练本人。指令在 `coach/project-instructions.md`，知识文件是 `progress/coach-memory.md`。
-- **这个 repo** = 总账本。错题、表达、复盘、测量都在这里，用 git 留历史。
+- **这个 repo** = 总账本。错题、表达、复盘、测量都在这里，用 git 留历史。**你不用本地 checkout，也不用自己 push**，Claude Code 会处理。
 - **Enjoy**（[enjoy.bot](https://enjoy.bot) / Chrome 插件，开源项目 [everyone-can-use-english](https://github.com/ZuodaoTech/everyone-can-use-english)）= 真实素材的逐句精听、听写、跟读工具。
 
 ## 每周节奏（每天 30 分钟）
@@ -69,10 +69,11 @@
 ## 第一次上手（约 20 分钟）
 
 1. 在 Claude App 新建 Project，名字随意（如 "English Coach"）。
-2. 把 `coach/project-instructions.md` 的全文贴进 Project 的 **Instructions**。
-3. 把 `progress/coach-memory.md` 上传为 Project **知识文件**。
-4. 本周第一天做 `coach/prompts/baseline.md` 的基线测试，卡片贴进 `progress/inbox.md`。
-5. 之后按上面的周表练。每周跑完 `/weekly-review` 后，**用新的 `coach-memory.md` 替换 Project 里的旧文件**。
+2. 在 GitHub 网页上打开 `coach/project-instructions.md`，复制分隔线以下的内容，贴进 Project 的 **Instructions**。
+3. 在 GitHub 上打开 `progress/coach-memory.md`，先填好开始日期，再复制全文，在 Project 知识库里用 **添加文本内容** 粘贴进去（不用下载文件）。
+4. 本周第一天做 `coach/prompts/baseline.md` 的基线测试。
+5. 之后按上面的周表练，卡片先存在手机备忘录里。
+6. 周末在 claude.ai/code 用这个 repo 开一个 session，把一周的卡片贴进去，运行 `/weekly-review`。它会自动更新文件并 push，最后显示新的 `coach-memory.md`，你复制去替换 Project 里的旧版本。
 
 ## 推荐真实素材
 

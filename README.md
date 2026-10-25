@@ -19,7 +19,7 @@ progress/
 ```
 
 ## 每天
-打开对应的 `coach/prompts/*.md`，照着练 → 把 SESSION CARD 粘进 `progress/inbox.md`。
+打开对应的 `coach/prompts/*.md`，照着练 → 把 SESSION CARD 复制到手机备忘录（或 `progress/inbox.md`）。
 
 ## 每周末
-在 Claude Code 里运行 `/weekly-review` → 把新的 `progress/coach-memory.md` 替换到 Claude Project。
+在 claude.ai/code 用这个 repo 开 session，贴上一周的卡片，运行 `/weekly-review` → 文件自动更新并 push → 复制它输出的 `coach-memory.md` 全文，替换 Claude Project 里的旧版本。

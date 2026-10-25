@@ -1,6 +1,6 @@
 ---
 name: weekly-review
-description: Weekly English-coaching review. Reads the SESSION CARDs in progress/inbox.md, updates the mistake patterns and expression library, writes the weekly report with next week's plan, and regenerates progress/coach-memory.md for the Claude Project. Use when the user says "weekly review", "复盘", or invokes /weekly-review.
+description: Weekly English-coaching review. Reads the week's SESSION CARDs (pasted into the chat and/or in progress/inbox.md), updates the mistake patterns and expression library, writes the weekly report with next week's plan, and regenerates progress/coach-memory.md for the Claude Project. Use when the user says "weekly review", "复盘", or invokes /weekly-review.
 disable-model-invocation: true
 ---
 
@@ -9,7 +9,9 @@ disable-model-invocation: true
 Turn this week's SESSION CARDs into updated progress files and next week's plan. Write user-facing reports in Chinese; keep `coach-memory.md` in English (the coach reads it), with short 中文 notes where they help.
 
 ## Inputs
-- `progress/inbox.md`: SESSION CARDs pasted since the last review (format defined in `coach/project-instructions.md`)
+- SESSION CARDs the user pasted into the conversation. This is the usual case: they collect cards on their phone during the week and paste them all at once.
+- `progress/inbox.md`: any cards saved there since the last review
+- Card format is defined in `coach/project-instructions.md`.
 - `progress/mistakes.md`, `progress/expressions.md`, `progress/measurements.md`
 - `progress/coach-memory.md`: last week's stage, patterns, and target expressions
 - `progress/weekly/`: previous reports (for stage, week number, and scenarios already used)
@@ -18,7 +20,7 @@ Turn this week's SESSION CARDs into updated progress files and next week's plan.
 
 ## Steps
 
-1. **Parse the cards.** Read every `=== SESSION CARD ===` block in `progress/inbox.md`. If the inbox is empty, tell the user, ask whether they practiced without saving cards, and stop unless they want the plan regenerated anyway. Tolerate cards that drift slightly from the format.
+1. **Parse the cards.** Collect every `=== SESSION CARD ===` block from the conversation and from `progress/inbox.md`, and drop duplicates. If there are none, ask the user to paste this week's cards. Stop only if they say they didn't practice; even then, offer to regenerate next week's plan. Tolerate cards that drift from the format: free-form notes or the coach's feedback text pasted instead of a card are fine, so extract what you can.
 
 2. **Work out the stage.** Find the most recent report in `progress/weekly/` and the start date in `coach-memory.md`. Use them to determine the ISO week (`YYYY-Www`), the month of the program (M1/M2/M3; weeks 1–4 = M1, 5–8 = M2, 9+ = M3), and the week number within the program. Ask the user if the start date is missing.
 
@@ -47,6 +49,11 @@ Turn this week's SESSION CARDs into updated progress files and next week's plan.
 
 9. **Regenerate `progress/coach-memory.md`.** Keep its section structure. Update the current stage and difficulty, the top 5 active mistake patterns (🔴 first, then by count, each with one example), the top listening weak spots, this week's target expressions, and coach notes (anything the cards show about what works for the learner). Keep it under about 60 lines.
 
-10. **Archive the inbox.** Move the processed cards to `progress/archive/YYYY-Www.md`, then reset `progress/inbox.md` to its header (everything through the `<!-- CARDS BELOW -->` line).
+10. **Archive the cards.** Write all processed cards, both pasted and from the inbox, verbatim to `progress/archive/YYYY-Www.md` so the raw history is kept. Then reset `progress/inbox.md` to its header (everything through the `<!-- CARDS BELOW -->` line).
 
-11. **Report to the user, in Chinese,** in 5–8 lines: practice days, the biggest win, the top 1–2 problems, next week's focus, and a reminder to **replace `coach-memory.md` in the Claude Project**. Then ask whether to commit and push the changes.
+11. **Commit and push to the default branch.** The user has authorized every weekly review to commit and push without asking. Find the default branch with `git ls-remote --symref origin HEAD`. Commit with the message `Weekly review YYYY-Www` and push to that branch. If this session works on a separate branch, commit there, then fast-forward or merge it into the default branch and push both. If the push fails, report the error. Never force-push.
+
+12. **Report to the user, in Chinese:**
+    - 5–8 lines covering practice days, the biggest win, the top 1–2 problems, and next week's focus.
+    - Next week's day-by-day plan table.
+    - The **full text of the new `progress/coach-memory.md` in a single code block**, so the user can copy it from their phone, with one line: "复制下面的内容，替换 Claude Project 里旧的 coach-memory。"
