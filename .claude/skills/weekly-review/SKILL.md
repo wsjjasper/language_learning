@@ -9,7 +9,7 @@ disable-model-invocation: true
 Turn this week's SESSION CARDs into updated progress files and next week's plan. Write user-facing reports in Chinese; keep `coach-memory.md` in English (the coach reads it), with short 中文 notes where they help.
 
 ## Inputs
-- SESSION CARDs the user pasted into the conversation. This is the usual case: they collect cards on their phone during the week and paste them all at once.
+- SESSION CARDs the user pasted into the conversation. This is the usual case: they say "weekly cards" in the Claude Project, and the coach returns one block (`=== WEEK ... ===` followed by the cards) that they paste here.
 - `progress/inbox.md`: any cards saved there since the last review
 - Card format is defined in `coach/project-instructions.md`.
 - `progress/mistakes.md`, `progress/expressions.md`, `progress/measurements.md`
@@ -35,10 +35,10 @@ Turn this week's SESSION CARDs into updated progress files and next week's plan.
    - Add each `new_expressions` item to Learning (dedupe case-insensitively, ignoring small variations).
    - For each `target_usage` line marked `used correctly`, add 1 to the count. When it reaches 3/3, move it to Mastered with today's date.
 
-5. **Measurements.** If any card has `type: baseline`, copy its numbers into `progress/measurements.md`, filling the M-label from the stage. If this is the first weekend of a month and there's no measurement for that month yet, add a reminder to the report.
+5. **Measurements.** If any card has `type: baseline`, copy its `metrics` (words, fillers per 100 words, self-corrections, average sentence length, listening score out of 5, and the four self-ratings) into `progress/measurements.md`, filling the M-label from the stage. If this is the first weekend of a month and there's no measurement for that month yet, add a reminder to the report.
 
 6. **Plan next week.** Pick scenarios from `coach/scenarios.md` for the current stage (M3 can also reuse M2 at higher speed):
-   - Mon/Wed LISTENING: one AI-dialogue scenario plus one real-audio suggestion each (from the sources in `PLAN.md`, a specific show or episode type). Bias toward the top listening-gap causes.
+   - Mon/Wed LISTENING: one AI-dialogue scenario each, biased toward the top listening-gap causes. Optionally add one real-audio suggestion for passive listening, chosen from the sources in `PLAN.md`; it only goes in the weekly report, with no task attached.
    - Tue/Thu SPEAKING: scenarios that exercise the top active mistake patterns.
    - Fri LIFE: rotate small talk → phone call → social across weeks.
    - Don't repeat a scenario used in the last 3 weekly reports unless it went badly (a 🔴 fix in that session).
@@ -47,7 +47,15 @@ Turn this week's SESSION CARDs into updated progress files and next week's plan.
 
 8. **Write the weekly report** to `progress/weekly/YYYY-Www.md`, following `progress/weekly/TEMPLATE.md`. Be specific and short. Name real patterns and real examples from the cards.
 
-9. **Regenerate `progress/coach-memory.md`.** Keep its section structure. Update the current stage and difficulty, the top 5 active mistake patterns (🔴 first, then by count, each with one example), the top listening weak spots, this week's target expressions, and coach notes (anything the cards show about what works for the learner). Keep it under about 60 lines.
+9. **Regenerate `progress/coach-memory.md`.** Keep its section structure. Update:
+   - the current stage and difficulty
+   - **this week's plan** table (Mon–Fri scenarios from step 6, plus a Sat/Sun row, set to baseline when a monthly measurement is due), because the coach picks today's scenario from it
+   - the top 5 active mistake patterns (🔴 first, then by count, each with one example)
+   - the top listening weak spots
+   - this week's target expressions
+   - coach notes: anything the cards show about what works for the learner
+
+   Keep it under about 70 lines. The learner wants zero friction, so never add homework that needs typing or pasting.
 
 10. **Archive the cards.** Write all processed cards, both pasted and from the inbox, verbatim to `progress/archive/YYYY-Www.md` so the raw history is kept. Then reset `progress/inbox.md` to its header (everything through the `<!-- CARDS BELOW -->` line).
 

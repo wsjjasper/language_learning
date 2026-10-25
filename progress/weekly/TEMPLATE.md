@@ -25,11 +25,13 @@
 
 | 日 | 类型 | 场景 / 素材 |
 |---|---|---|
-| 周一 | LISTENING | AI 对话： · Enjoy 素材： |
-| 周二 | SPEAKING | |
-| 周三 | LISTENING | AI 对话： · Enjoy 素材： |
-| 周四 | SPEAKING | |
-| 周五 | LIFE | |
+| 周一 | listening | |
+| 周二 | speaking | |
+| 周三 | listening | |
+| 周四 | speaking | |
+| 周五 | life | |
+
+可选的真实音频（只听）：
 
 **下周目标表达**（已写入 coach-memory.md）：
 

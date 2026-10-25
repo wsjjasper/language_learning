@@ -1,39 +1,17 @@
-# 听力日（周一 / 周三，30 分钟）
+# 听力日（周一 / 周三）
 
-## Part A：AI 对话盲听（15 分钟，Claude Project）
+## 练法（20–30 分钟，什么都不用打字）
 
-在 Claude Project 里新开一个对话，贴：
+1. 打开 Claude Project → 点 **语音模式**（输入框旁边的声波图标，不是麦克风）。
+2. 说 **"listening"**。教练会按本周计划选场景，直接开始。
+3. 听的时候 **别看屏幕**（屏幕上会显示文字）。
+4. 用嘴复述 → 回答问题 → 跟读漏掉的句子。
+5. 一般做 2–3 段，一段比一段快。结束就关掉，不用复制任何东西。
 
-```
-LISTENING. Scenario: <从本周计划里挑一个，例如 "sprint planning where two engineers push back on scope">.
-Speed: <normal | fast | very fast>. Speakers: <2–4>.
-```
+想更难：说 "faster" / "add another person" / "more slang"。
 
-流程（教练会按 Project 指令执行）：
-1. 语音模式下教练朗读对话。**屏幕翻过去或别看文字。**
-2. 用英文口头复述：谁、在争什么、结果是什么、谁其实不满意。
-3. 回答 3 个理解题（含 1 个语气/言外之意题）。
-4. 教练展示原文，标出你漏掉的部分，讲吞音、连读和俚语。
-5. **跟读 2 遍** 你漏掉的那几句（模仿语速和语调）。
-6. 说 "card"，复制 SESSION CARD → `progress/inbox.md`。
+## 真实音频（可选，不复盘）
 
-> 语音模式下转录文字会出现在屏幕上，所以第 1 步一定别看。想更真实可以说 "read it again faster"。
+通勤、做家务、健身时听 Hard Fork、美剧或任何喜欢的内容就行，**不写总结、不贴字幕、不算进 30 分钟**。
 
-## Part B：真实素材精听（15 分钟，Enjoy）
-
-1. 打开 [enjoy.bot](https://enjoy.bot) 或在 YouTube 上用 Enjoy Chrome 插件，选本周计划里的素材，截一段 **2–3 分钟**。
-2. **第 1 遍**：不看字幕完整听，心里估一个理解率（%）。
-3. **第 2 遍**：逐句听，听不懂的句子先自己写下听到的版本，再看字幕。
-4. 挑 3–5 句最难的，用 Enjoy 的跟读录音对比。
-5. 回到 Claude Project，贴：
-
-```
-LISTENING debrief, real audio. Source: <节目名 + 链接>.
-First-pass comprehension: <xx>%.
-Sentences I missed (what I heard -> actual):
-- "..." -> "..."
-- "..." -> "..."
-Explain why I missed each one, then give me the SESSION CARD.
-```
-
-6. 复制卡片 → `progress/inbox.md`。
+唯一的小动作：听到一句完全没听懂的话，倒回去打开字幕看一眼，然后继续听。用 YouTube 或 Enjoy（[enjoy.bot](https://enjoy.bot) / Chrome 插件）都可以，Enjoy 倒回单句更方便。
